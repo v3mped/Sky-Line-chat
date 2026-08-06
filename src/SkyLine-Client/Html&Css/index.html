@@ -1,0 +1,101 @@
+<!-- Wrote by v3mped -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyline Chat v3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. Auth Login / Signup Portal Overlay -->
+    <div id="auth-container" class="auth-screen">
+        <div class="auth-card">
+            <h2>Welcome to Skyline Chat</h2>
+            <p>Enter a username and password to log in or create an account.</p>
+            <input type="text" id="auth-username" placeholder="Username" autocomplete="off">
+            <input type="password" id="auth-password" placeholder="Password">
+            <div class="auth-actions">
+                <button id="login-btn">Log In</button>
+                <button id="signup-btn" class="secondary-btn">Sign Up</button>
+            </div>
+            <p id="auth-error" class="error-text"></p>
+        </div>
+    </div>
+
+    <!-- 2. Main Layout Shell (Hidden until logged in) -->
+    <div id="app-container" class="app-layout hidden">
+        
+        <!-- Sidebar Navigation (Left Panel) -->
+        <aside class="sidebar">
+            <div class="sidebar-profile">
+                <h3>My Profile</h3>
+                <div id="current-user-tag">@username</div>
+            </div>
+
+            <!-- Friends Search Field -->
+            <div class="search-box">
+                <input type="text" id="friend-search" placeholder="🔍 Search friend username...">
+                <button id="search-go-btn">Go</button>
+            </div>
+
+            <!-- Conversation Lists -->
+            <div class="conversations-wrapper">
+                <!-- Global channel card -->
+                <div class="conv-card active" id="card-public" onclick="switchRoom('public')">
+                    <h4>🌐 Public Global Chat</h4>
+                </div>
+
+                <div class="section-divider">Talk to the owners of skyline</div>
+                
+                <!-- Fixed Owner Cards pinned to top of DMs list -->
+                <div class="conv-card" id="card-v3mped" onclick="startDM('V3MPED')">
+                    <div class="owner-status"></div>
+                    <div>
+                        <h4>👑 V3MPED</h4>
+                        <p class="role-subtitle">Creator</p>
+                    </div>
+                </div>
+
+                <div class="conv-card" id="card-gl1tched2" onclick="startDM('Gl1TCHED2')">
+                    <div class="owner-status"></div>
+                    <div>
+                        <h4>🛠️ Gl1TCHED2</h4>
+                        <p class="role-subtitle">Co-Owner</p>
+                    </div>
+                </div>
+
+                <div class="section-divider">Recent Direct Messages</div>
+                <div id="dynamic-dm-list">
+                    <!-- Other custom DMs -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Dynamic Chat Window Container (Right Panel) -->
+        <main class="chat-container">
+            <header class="chat-header">
+                <h1 id="chat-title">Skyline Chat (Public BETA)</h1>
+            </header>
+            
+            <div class="chat-messages" id="chat-messages">
+                <!-- Message Streams injection wrapper -->
+            </div>
+            
+            <footer class="chat-footer">
+                <input type="text" placeholder="Type a message..." id="message-input" autocomplete="off">
+                <button id="send-btn">Send</button>
+            </footer>
+        </main>
+        
+    </div>
+
+    <!-- Firebase SDK Stack -->
+    <script src="https://gstatic.com"></script>
+    <script src="https://gstatic.com"></script>
+    
+    <!-- CodeHS Client Runner File -->
+    <script src="client.js"></script>
+</body>
+</html>
